@@ -1,0 +1,4 @@
+name: WreckUtilities
+version: '${project.version}'
+main: me.clutchmasterftw.wreckutilities.WreckUtilities
+api-version: '1.19'
