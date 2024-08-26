@@ -2,3 +2,11 @@ name: WreckUtilities
 version: '${project.version}'
 main: me.clutchmasterftw.wreckutilities.WreckUtilities
 api-version: '1.19'
+commands:
+  wreckutils:
+    description: The main command used for WreckUtilities
+    usage: /wreckutils [subcommands]
+    permission: wreckutilities.admin
+permissions:
+  wreckutilities.admin:
+    description: The main administration command for WreckUtilities
