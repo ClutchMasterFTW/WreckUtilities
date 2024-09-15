@@ -8,7 +8,10 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -78,11 +81,33 @@ public class Commands implements CommandExecutor {
                             }
                             break;
                         case "wrecker_potion": {
-                            // Wrecker Potion
+                                // Wrecker Potion
+                            }
+                            break;
+                        case "smuggler_voucher": {
+                                // Smuggler Voucher
+                                ItemStack item = new ItemStack(Material.PAPER);
+                                ItemMeta meta = item.getItemMeta();
+                                meta.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Smuggler Voucher");
+                                PersistentDataContainer data = meta.getPersistentDataContainer();
+                                NamespacedKey key = new NamespacedKey(WreckUtilities.getPlugin(), "isSmugglerVoucher");
+                                data.set(key, PersistentDataType.BOOLEAN, true);
+
+                                List<String> lore = new ArrayList<String>();
+                                lore.add(ChatColor.RESET + "" + ChatColor.WHITE + "Right click this voucher to visit the Smuggler.");
+                                lore.add("");
+                                lore.add(ChatColor.RESET + "" + ChatColor.WHITE + "The Smuggler buys materials for much more than the prison");
+                                lore.add(ChatColor.RESET + "" + ChatColor.WHITE + "shop does. They also buy rare special materials that the prison");
+                                lore.add(ChatColor.RESET + "" + ChatColor.WHITE + "doesn't buy. You only get " + ChatColor.BOLD + "60" + ChatColor.RESET + ChatColor.WHITE + " seconds to do your business!");
+                                meta.setLore(lore);
+
+                                item.setItemMeta(meta);
+
+                                placeItemInPlayerSlot(sender, player, item);
                             }
                             break;
                         default:
-                            if(args.length == 2) {
+                            if(args.length == 3) {
                                 sender.sendMessage(PREFIX + ChatColor.RED + "The provided item name was not found!");
                             } else {
                                 sender.sendMessage(PREFIX + ChatColor.RED + "Too many arguments!");

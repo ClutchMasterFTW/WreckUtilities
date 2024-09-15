@@ -26,7 +26,7 @@ public class CommandsAutoCompletion implements TabCompleter {
             }
             StringUtil.copyPartialMatches(args[1], playerNames, suggestions);
         } else if(args.length == 3 && args[0].equalsIgnoreCase("give")) {
-            StringUtil.copyPartialMatches(args[2], Arrays.asList("haste_potion_1", "haste_potion_2", "wrecker_potion"), suggestions);
+            StringUtil.copyPartialMatches(args[2], Arrays.asList("haste_potion_1", "haste_potion_2", "wrecker_potion", "smuggler_voucher"), suggestions);
         }
 
         return suggestions;
