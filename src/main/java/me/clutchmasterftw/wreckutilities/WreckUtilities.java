@@ -1,5 +1,6 @@
 package me.clutchmasterftw.wreckutilities;
 
+import me.clutchmasterftw.wreckutilities.events.ItemDropOnPressurePlate;
 import me.clutchmasterftw.wreckutilities.events.OnSmugglerVoucherUse;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -35,8 +36,10 @@ public final class WreckUtilities extends JavaPlugin {
         getCommand("wreckutils").setTabCompleter(new CommandsAutoCompletion());
 
         Bukkit.getServer().getPluginManager().registerEvents(new OnSmugglerVoucherUse(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new ItemDropOnPressurePlate(), this);
 
         logger.info("WreckUTILITIES has loaded successfully!");
+        logger.info("Created by ClutchMasterFTW | All Rights Reserved.");
     }
 
     @Override
